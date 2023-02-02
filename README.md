@@ -1,14 +1,7 @@
-# GiveChain
+# GiveChain 🦸‍♀️🦸‍♂️
 
 GiveChain is a decentralized donating system, allowing people to donate to various social and enviornmental issues. <br>
 The best part, there is no middleman!! So you have no 'trust-issues' to stand between the donor and the charity, which increases confidence and reduces fraud.
-<br>
-
-## Problem Statement
-
-We intend to solve trust issues and frauds in such a good cause -- **DONATION**. <br>
-GiveChain uses blockchain technology to make sure that the money went properly to the appropriate person.
-
 <br>
 
 ## 🌟Push Protocol Integration🌟
@@ -18,12 +11,19 @@ GiveChain uses blockchain technology to make sure that the money went properly t
 - Group notification to fellow-peer donators when you donate to a campaign -- NEW FREN!!
 - Push Chat integration for asking any question from the poster of a campaign.
 - Display all notifications of a user in the "bell icon" on the front page.
-  
+
+<br>
+
+## Problem Statement
+
+We intend to solve trust issues and frauds in such a good cause -- **DONATION**. <br>
+GiveChain uses blockchain technology to make sure that the money went properly to the appropriate person.
+
 <br>
 
 ## Tech Stack used
 
-Vite, Thirdweb, Solidity, Push Protocol, TailwindCSS, Polygon-Mumbai
+Push Protocol, Vite, Thirdweb, Solidity, TailwindCSS, Polygon-Mumbai
 
 ## Presentation Slides
 
