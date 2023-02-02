@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { useStateContext } from '../context';
@@ -9,38 +9,13 @@ import Notifications from 'react-notifications-menu';
 import * as PushAPI from '@pushprotocol/restapi';
 import { useAddress, useContract, useMetamask, useContractWrite } from '@thirdweb-dev/react';
 
-// async function getNotif(address) {
-//   const notifications = await PushAPI.user.getFeeds({
-//     // user: `eip155:80001:${address}`, // user address in CAIP
-//     // user: 'eip155:80001:'+address, // user address in CAIP
-//     user: 'eip155:80001:0x762cA62ca2549ad806763B3Aa1eA317c429bDBDa', // user address in CAIP
-//     env: 'staging',
-//   });
-//   // console.log(user);
-//   return notifications;
-// }
 
-// let address;
-// function getA() {
-//   address = useAddress();
-//   if (!address) {
-//     address = '0x762cA62ca2549ad806763B3Aa1eA317c429bDBDa';
-//   }
-//   return address;
-// }
-
-const notifications = await PushAPI.user.getFeeds({
-  // user: `eip155:80001:${getA()}`, // user address in CAIP
-  // user: 'eip155:80001:' + address, // user address in CAIP
-  user: 'eip155:80001:0x762cA62ca2549ad806763B3Aa1eA317c429bDBDa', // user address in CAIP
-  env: 'staging',
-});
-
-function Navbar(){
+const Navbar = () => {
   const navigate = useNavigate();
   const [isActive, setIsActive] = useState('dashboard');
   const [toggleDrawer, setToggleDrawer] = useState(false);
   const { connect, address } = useStateContext();
+  const [notifData, setNotifData] = useState([]);
   const data = [
     {
       image: 'https://synergi-dev.s3.ap-southeast-1.amazonaws.com/profile-pictures/6b9.png',
@@ -50,6 +25,34 @@ function Navbar(){
     },
   ];
 
+
+  const getNotifications = async () => {
+    let addr = address;
+    if (!addr) {
+      addr = "0x762ca62ca2549ad806763b3aa1ea317c429bdbda";
+    }
+    let notificationsData = await PushAPI.user.getFeeds({
+      // user: `eip155:80001:${getA()}`, // user address in CAIP
+      user: 'eip155:80001:' + addr, // user address in CAIP
+      // user: 'eip155:80001:', // user address in CAIP
+      env: 'staging',
+    });
+    // console.log(notificationsData);
+    const numberOfNotif = notificationsData.length;
+
+    const final = [];
+    // console.log(numberOfNotif);
+    for(let i = 0; i < numberOfNotif; i++) {
+      final.push({
+        image: bell,
+        message: notificationsData[i].message
+      })
+    }
+    // console.log(final);
+    setNotifData(final);
+  };
+
+  
   return (
     <div className="flex md:flex-row flex-col-reverse justify-between mb-[35px] gap-6">
       <h1 className="justify-center items-center text-center text-5xl">
@@ -66,10 +69,11 @@ function Navbar(){
           <img src={search} alt="search" className="w-[15px] h-[15px] object-contain" />
         </div>
       </div>
-      {console.log(notifications)}
-      <div className="mt-5">
-        <Notifications data={notifications} icon={bell} />
-      </div>
+      
+      <button className="mt-5" onClick={getNotifications}>
+      {/* <button onClick={getNotifications}></button> */}
+        <Notifications data={notifData} icon={bell} />
+      </button>
 
       <div className="sm:flex hidden flex-row justify-end gap-4">
         <CustomButton
