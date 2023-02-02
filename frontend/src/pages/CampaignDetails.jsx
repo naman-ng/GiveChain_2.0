@@ -28,6 +28,8 @@ const CampaignDetails = () => {
   const fetchDonators = async () => {
     const data = await getDonations(state.pId);
     const dataAdd = await getDonationsAddress(state.pId);
+    dataAdd.push(address);
+    console.log(dataAdd);
     setDonatorsAdd(dataAdd);
     setDonators(data);
   };
@@ -44,10 +46,10 @@ const CampaignDetails = () => {
         identityType: 2, // direct payload
         notification: {
           title: `Meet your friend`,
-          body: `Campaign-${form.title} new donator`,
+          body: `Campaign-${state.title} new donator`,
         },
         payload: {
-          title: `Donate`,
+          title: `Donate more`,
           body: `New donator-${address} lessgoo!!`,
           cta: '',
           img: '',
@@ -128,7 +130,7 @@ const CampaignDetails = () => {
               {donators.length > 0 ? (
                 donators.map((item, index) => (
                   <div key={`${item.donator}-${index}`} className="flex justify-between items-center gap-4">
-                    <p className="font-epilogue font-normal text-[16px] text-yellow leading-[26px] break-ll">
+                    <p className="font-epilogue font-normal text-[16px] text-button leading-[26px] break-ll">
                       {index + 1}. {item.donator}
                     </p>
                     <p className="font-epilogue font-normal text-[16px] text-black leading-[26px] break-ll">
@@ -184,12 +186,17 @@ const CampaignDetails = () => {
                 </p>
               </div>
 
-              <CustomButton
-                btnType="button"
-                title="Fund Campaign"
-                styles="w-full bg-[#8c6dfd]"
-                handleClick={handleDonate}
-              />
+              <button onClick={sendNotification}>
+                <CustomButton
+                  btnType="button"
+                  title="Fund Campaign"
+                  styles="w-full bg-[#8c6dfd]"
+                  handleClick={handleDonate}
+                />
+              </button>
+              {/* <button className="mt-20" onClick={sendNotification}>
+                Send Notif
+              </button> */}
             </div>
           </div>
         </div>
