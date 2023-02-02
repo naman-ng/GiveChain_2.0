@@ -6,13 +6,17 @@ GiveChain is a decentralized donating system, allowing people to donate to vario
 
 We intend to solve the trust issues and frauds in such a good cause, **DONATION**. With GiveChain you are sure the money went to the appropriate person.
 
-# Problem-faced in implementing
+# 🌟Push Protocol Integration🌟
+1. Opt-In and Opt-Out option for gettting into GiveChain notification channel.
+2. Broadcast notification to everyone when new campaign is created.
+3. Group notification to fellow-peer donators when you donate to a campaign -- NEW FREN!!
+4. Push Chat integration for asking any question from the poster of a campaign.
+5. Display all notifications of a user in the "bell icon" on the front page.
 
-During uploading of charity details through IPFS and retrieving it.
 
 # Tech Stack used
 
-Vite, Thirdweb, Solidity, IPFS, Polygon-Mumbai, TailwindCSS
+Vite, Thirdweb, Solidity, Push Protocol, TailwindCSS, Polygon-Mumbai
 
 # Slides
 
