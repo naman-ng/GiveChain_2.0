@@ -14,8 +14,7 @@ const Navbar = () => {
 
   return (
     <div className="flex md:flex-row flex-col-reverse justify-between mb-[35px] gap-6">
-      {/* <h1 className='justify-center items-center text-center'>GiveChain</h1> */}
-      <img src={logo1} className='flex justify-center items-center rounded-[10px] w-[150px] h-[52px]'  />
+      <h1 className='justify-center items-center text-center text-5xl'><span className='text-button'>G</span>ive<span className='text-button'>C</span>hain</h1>
       <div className="lg:flex-1 flex flex-row max-w-[458px] py-2 pl-4 pr-2 h-[52px] bg-yellow rounded-[100px]">
         <input type="text" placeholder="Search for campaigns" className="flex w-full font-epilogue font-normal text-[14px] placeholder:text-black text-white bg-yellow outline-none" />
         
