@@ -12,28 +12,6 @@ const PK = '8665ed6c0de68518c0676ba29b5868a5020007151d6c91d7614a5b8e2a576ba8'; /
 const Pkey = `0x${PK}`;
 const signer = new ethers.Wallet(Pkey);
 
-// apiResponse?.status === 204, if sent successfully!
-// async function apiResponse() {
-//   await PushAPI.payloads.sendNotification({
-//     signer,
-//     type: 1, // broadcast
-//     identityType: 2, // direct payload
-//     notification: {
-//       title: `[SDK-TEST] notification TITLE:`,
-//       body: `[sdk-test] notification BODY`,
-//     },
-//     payload: {
-//       title: `[sdk-test] payload title`,
-//       body: `sample msg body`,
-//       cta: '',
-//       img: '',
-//     },
-//     channel: 'eip155:80001:0xFFd01a76cA473B48431E27Ab36f61a764270238F', // your channel address
-//     env: 'staging',
-//   });
-//   console.log('DONE');
-// }
-
 const CreateCampaign = () => {
   const sendNotification = async () => {
     try {
@@ -42,11 +20,11 @@ const CreateCampaign = () => {
         type: 1, // broadcast
         identityType: 2, // direct payload
         notification: {
-          title: `Donate to newCampaign`,
+          title: `Donate to new Campaign`,
           body: `Campaign-${form.title} created!!`,
         },
         payload: {
-          title: `Donate`,
+          title: `Donate please`,
           body: `New Campaign-${form.title} created!!`,
           cta: '',
           img: '',
@@ -86,7 +64,7 @@ const CreateCampaign = () => {
         setIsLoading(true);
         await createCampaign({ ...form, target: ethers.utils.parseUnits(form.target, 18) });
         setIsLoading(false);
-        sendNotification;
+        // sendNotification;
         navigate('/');
       } else {
         alert('Provide valid image URL');
@@ -163,10 +141,12 @@ const CreateCampaign = () => {
         />
 
         <div className="flex justify-center items-center mt-[40px]">
-          <CustomButton btnType="submit" title="Submit new campaign" styles="bg-[#1dc071]" />
+          <button onClick={sendNotification}>
+            <CustomButton btnType="submit" title="Submit new campaign" styles="bg-[#1dc071]" />
+          </button>
         </div>
       </form>
-      {/* <button className="mt-20" onClick={sendNotification}>
+      {/* <button className="mt-20" >
         Send Notif
       </button> */}
     </div>
