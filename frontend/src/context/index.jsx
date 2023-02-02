@@ -76,6 +76,18 @@ export const StateContextProvider = ({ children }) => {
     return parsedDonations;
   }
 
+  const getDonationsAddress = async (pId) => {
+    const donations = await contract.call('getDonators', pId);
+    const numberOfDonations = donations[0].length;
+
+    const parsedDonationsAddress = [];
+
+    for(let i = 0; i < numberOfDonations; i++) {
+      parsedDonationsAddress.push(donations[0][i])
+    }
+
+    return parsedDonationsAddress;
+  }
 
   return (
     <StateContext.Provider
@@ -87,7 +99,8 @@ export const StateContextProvider = ({ children }) => {
         getCampaigns,
         getUserCampaigns,
         donate,
-        getDonations
+        getDonations,
+        getDonationsAddress
       }}
     >
       {children}

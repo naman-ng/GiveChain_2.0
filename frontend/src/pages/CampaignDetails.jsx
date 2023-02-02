@@ -7,21 +7,28 @@ import { CountBox, CustomButton, Loader } from '../components';
 import { calculateBarPercentage, daysLeft } from '../utils';
 import { thirdweb } from '../assets';
 import { Chat } from '@pushprotocol/uiweb';
+import * as PushAPI from '@pushprotocol/restapi';
+
+const PK = '8665ed6c0de68518c0676ba29b5868a5020007151d6c91d7614a5b8e2a576ba8'; // channel private key
+const Pkey = `0x${PK}`;
+const signer = new ethers.Wallet(Pkey);
 
 const CampaignDetails = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
-  const { donate, getDonations, contract, address } = useStateContext();
+  const { donate, getDonations, getDonationsAddress, contract, address } = useStateContext();
 
   const [isLoading, setIsLoading] = useState(false);
   const [amount, setAmount] = useState('');
   const [donators, setDonators] = useState([]);
+  const [donatorsAdd, setDonatorsAdd] = useState([]);
 
   const remainingDays = daysLeft(state.deadline);
 
   const fetchDonators = async () => {
     const data = await getDonations(state.pId);
-
+    const dataAdd = await getDonationsAddress(state.pId);
+    setDonatorsAdd(dataAdd);
     setDonators(data);
   };
 
@@ -29,11 +36,39 @@ const CampaignDetails = () => {
     if (contract) fetchDonators();
   }, [contract, address]);
 
+  const sendNotification = async () => {
+    try {
+      const apiResponse = await PushAPI.payloads.sendNotification({
+        signer,
+        type: 4, // subset
+        identityType: 2, // direct payload
+        notification: {
+          title: `Meet your friend`,
+          body: `Campaign-${form.title} new donator`,
+        },
+        payload: {
+          title: `Donate`,
+          body: `New donator-${address} lessgoo!!`,
+          cta: '',
+          img: '',
+        },
+        recipients: donatorsAdd, // recipients addresses
+        channel: 'eip155:5:0xFFd01a76cA473B48431E27Ab36f61a764270238F', // your channel address
+        env: 'staging',
+      });
+
+      // apiResponse?.status === 204, if sent successfully!
+      console.log('API repsonse: ', apiResponse);
+    } catch (err) {
+      console.error('Error: ', err);
+    }
+  };
+
   const handleDonate = async () => {
     setIsLoading(true);
 
     await donate(state.pId, amount);
-
+    sendNotification;
     navigate('/');
     setIsLoading(false);
   };
