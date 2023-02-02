@@ -7,7 +7,6 @@ import { logo, logo1, menu, search, thirdweb, bell } from '../assets';
 import { navlinks } from '../constants';
 import Notifications from 'react-notifications-menu';
 import * as PushAPI from '@pushprotocol/restapi';
-import { useAddress, useContract, useMetamask, useContractWrite } from '@thirdweb-dev/react';
 
 
 const Navbar = () => {
@@ -16,15 +15,6 @@ const Navbar = () => {
   const [toggleDrawer, setToggleDrawer] = useState(false);
   const { connect, address } = useStateContext();
   const [notifData, setNotifData] = useState([]);
-  const data = [
-    {
-      image: 'https://synergi-dev.s3.ap-southeast-1.amazonaws.com/profile-pictures/6b9.png',
-      message: 'Lorem ipsum dolor sit amet.',
-      detailPage: '/events',
-      receivedTime: '12h ago',
-    },
-  ];
-
 
   const getNotifications = async () => {
     let addr = address;
