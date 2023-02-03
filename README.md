@@ -6,9 +6,9 @@ The best part, there is no middleman!! So you have no 'trust-issues' to stand be
 
 ## 🌟Push Protocol Integration🌟
 
-- Opt-In and Opt-Out option for gettting into GiveChain notification channel.
-- Broadcast notification to everyone when new campaign is created.
-- Group notification to fellow-peer donators when you donate to a campaign -- NEW FREN!!
+- Opt-In and Opt-Out options for getting into the GiveChain notification channel.
+- Broadcast notification to everyone when a new campaign is created.
+- Group notification to fellow peer donators when you donate to a campaign -- NEW FREN!!
 - Push Chat integration for asking any question from the poster of a campaign.
 - Display all notifications of a user in the "bell icon" on the front page.
 
