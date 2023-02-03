@@ -29,7 +29,7 @@ const CampaignDetails = () => {
     const data = await getDonations(state.pId);
     const dataAdd = await getDonationsAddress(state.pId);
     dataAdd.push(address);
-    console.log(dataAdd);
+    // console.log(dataAdd);
     setDonatorsAdd(dataAdd);
     setDonators(data);
   };
@@ -144,19 +144,20 @@ const CampaignDetails = () => {
                 </p>
               )}
             </div>
-            <Chat
+            {/* <Chat
               account="0x762cA62ca2549ad806763B3Aa1eA317c429bDBDa" //user address
               supportAddress="0x42066368D2b1c06E32e34c8A264a4fe7acE29606" //support address
               apiKey="CEYIGtETtl.f6Qx3DP6T6pSrlrDDb3Y0zZeiivgiRqiDmhvnEyaEjQxawayluny2NVfM3o9W9MP"
               env="staging"
               modalTitle="Ask the creator"
-            />
-            {/* <Chat
+            /> */}
+            <Chat
               account={address} //user address
               supportAddress={state.owner} //support address
               apiKey="CEYIGtETtl.f6Qx3DP6T6pSrlrDDb3Y0zZeiivgiRqiDmhvnEyaEjQxawayluny2NVfM3o9W9MP"
               env="staging"
-            /> */}
+              modalTitle="Ask the creator"
+            />
           </div>
         </div>
 

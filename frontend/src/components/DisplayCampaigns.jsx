@@ -38,8 +38,8 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
     getProviderOrSigner;
     await PushAPI.channels.unsubscribe({
       signer: _signer,
-      channelAddress: 'eip155:80001:0xFFd01a76cA473B48431E27Ab36f61a764270238F', // channel address in CAIP
-      userAddress: 'eip155:80001:' + address, // user address in CAIP
+      channelAddress: 'eip155:5:0xFFd01a76cA473B48431E27Ab36f61a764270238F', // channel address in CAIP
+      userAddress: 'eip155:5:' + address, // user address in CAIP
       onSuccess: () => {
         console.log('opt out success');
       },
@@ -57,8 +57,8 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }) => {
       signer: _signer,
       // channelAddress: 'eip155:5:0x762cA62ca2549ad806763B3Aa1eA317c429bDBDa', // channel address in CAIP
       // userAddress: `eip155:5:${address}`, // user address in CAIP
-      channelAddress: 'eip155:80001:0xFFd01a76cA473B48431E27Ab36f61a764270238F', // channel address in CAIP
-      userAddress: 'eip155:80001:' + address, // user address in CAIP
+      channelAddress: 'eip155:5:0xFFd01a76cA473B48431E27Ab36f61a764270238F', // channel address in CAIP
+      userAddress: 'eip155:5:' + address, // user address in CAIP
       onSuccess: () => {
         console.log('opt in success');
       },

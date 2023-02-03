@@ -60,8 +60,7 @@ const Navbar = () => {
         </div>
       </div>
       
-      <button className="mt-5" onClick={getNotifications}>
-      {/* <button onClick={getNotifications}></button> */}
+      <button className="justify-center" onClick={getNotifications}>
         <Notifications data={notifData} icon={bell} />
       </button>
 
