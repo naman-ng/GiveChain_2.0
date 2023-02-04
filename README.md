@@ -11,7 +11,7 @@ The best part, there is no middleman!! So you have no 'trust-issues' to stand be
 - Group notification to fellow peer donators when you donate to a campaign -- NEW FREN!!
 - Push Chat integration for asking any question from the poster of a campaign.
 - Display all notifications of a user in the "bell icon" on the front page.
-
+<br>** small bug my channel is on goerli network so opt-in and opt-out works on goerli but the donations are to be done in mumbai matic
 <br>
 
 ## Problem Statement
