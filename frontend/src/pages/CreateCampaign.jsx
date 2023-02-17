@@ -146,9 +146,6 @@ const CreateCampaign = () => {
           </button>
         </div>
       </form>
-      {/* <button className="mt-20" >
-        Send Notif
-      </button> */}
     </div>
   );
 };
